@@ -18,8 +18,13 @@ const deleteUser = (id) => {
   return axios.delete(baseUrl + "users/"+ id)
 }
 
+const addUser = (user) => {
+  return axios.post(baseUrl + "users", user)
+}
+
 export const RestApi = {
     login,
     getUsers,
-    deleteUser
+    deleteUser,
+    addUser
 }

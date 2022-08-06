@@ -15,7 +15,6 @@ const Login = () => {
         event.preventDefault();
 
         RestApi.login(userInfo.name, userInfo.password).then((res)=> {
-            console.log(res)
             if(res.data.name){
                 navigate("/home")
             }

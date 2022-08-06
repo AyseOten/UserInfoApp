@@ -28,7 +28,7 @@ const UserDelete = (props) => {
         <div className='Delete'>
             <Dialog header="Delete User" visible={displayBasic} style={{ width: '50vw' }} onHide={onHide}>
                 <p>Seçilen kullanıcıyı silmek istediğinize emin misiniz?</p>
-                <div style={{"display":"flex", }}>
+                <div style={{"display":"flex", justifyContent:"flex-end"}}>
                     <Button onClick={deleteAction} style={{ width: 'auto' }} > Evet </Button>
                     <Button onClick={onHide} style={{ width: 'auto' }}  >Hayır</Button>
                 </div>

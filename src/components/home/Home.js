@@ -11,15 +11,11 @@ const Home = () => {
 
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState([]);
-
-  console.log(selectedUser)
-
   const [addUserMode, setAddUserMode] = useState(false)
   const [deleteUserMode, setDeleteUserMode] = useState(false)
 
   useEffect(() => {
     RestApi.getUsers().then((res) => {
-      console.log(res)
       setUsers(res.data)
     }).catch((err) => {
       console.log(err)
