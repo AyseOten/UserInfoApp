@@ -3,15 +3,23 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import './Login.css';
 import { useState } from 'react';
+import { RestApi } from '../../utils/restapi/restapi';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const [value1, setValue1] = useState('');
-    const [value2, setValue2] = useState('');
+    const navigate = useNavigate();
+    const [userInfo, setUserInfo] = useState({name:'',password:""});
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("submit")
+
+        RestApi.login(userInfo.name, userInfo.password).then((res)=> {
+            console.log(res)
+            if(res.data.name){
+                navigate("/home")
+            }
+        })
     }
     return (
         <div className='Login'>
@@ -20,11 +28,11 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <div className='p-field'>
                         <label className='p-d-block'>Username</label>
-                        <InputText value={value1} onChange={(e) => setValue1(e.target.value)} />
+                        <InputText value={userInfo.name} onChange={(e) => setUserInfo({...userInfo, name:e.target.value})} />
                     </div>
                     <div className='p-field'>
                         <label className='p-d-block'>Password</label>
-                        <InputText type='password' value={value2} onChange={(e) => setValue2(e.target.value)} toggleMask feedback={false} />
+                        <InputText type='password' value={userInfo.password} onChange={(e) =>setUserInfo({...userInfo, password:e.target.value})} toggleMask feedback={false} />
                     </div>
                     <Button type='submit'>Login</Button>
                 </form>

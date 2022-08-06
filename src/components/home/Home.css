@@ -1,0 +1,31 @@
+.Home {
+    display: flex;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left {
+    width: 20vw;
+    background: #1F2D40;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    background: #374C68;
+}
+.navbar {
+    display: flex;
+    height: 10vh;
+    background-color: #1F2D40;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 80vw;
+    padding: 20px;
+}
