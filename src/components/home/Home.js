@@ -16,13 +16,18 @@ const Home = () => {
     { name: 'Sort By Name', code: 'name' },
     { name: 'Sort By ID', code: 'id' },
   ];
+  const genders = [
+    { name: 'Female', code: 'f' },
+    { name: 'Male', code: 'm' },
+  ];
 
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState([]);
   const [addUserMode, setAddUserMode] = useState(false)
   const [deleteUserMode, setDeleteUserMode] = useState(false)
   const [editOperatorMode, setEditOperatorMode] = useState(false)
-  const [selectedSortType, setSelectedSortType] = useState(false)
+  const [selectedSortType, setSelectedSortType] = useState()
+  const [selectedGender, setSelectedGender] = useState()
 
   useEffect(() => {
     getUsers();
@@ -94,6 +99,19 @@ const Home = () => {
     }
   }
 
+  const onSelectGender = (e) => {
+    if(e.value){
+      console.log(e.value)
+      setSelectedGender(e.value)
+      const filteredUser = users.filter((user)=>(user.gender.toLowerCase() === e.value.name.toLowerCase()))
+      setUsers(filteredUser)
+    }
+    else {
+      setSelectedGender(null)
+      getUsers()
+    }
+  }
+
   return (
     <div className="Home">
       <div className="right">
@@ -107,6 +125,7 @@ const Home = () => {
               <Button style={{ "width": "auto" }} disabled={!selectedUser.name} onClick={operatorEdit}> Operator Add/Delete</Button>
             </div>
             <div style={{ "display": "flex", "alignItems": "center" }}>
+              <Dropdown showClear={selectedGender} value={selectedGender} options={genders} onChange={onSelectGender} optionLabel="name" placeholder="Filter By Gender" />
               <InputText style={{ "width": "auto" }} onChange={onChangeFilter} placeholder="Filter By Name" />
               <Dropdown value={selectedSortType} options={sortTypes} onChange={onSortTypeChange} optionLabel="name" placeholder="Select sort type" />
             </div>
@@ -116,7 +135,7 @@ const Home = () => {
               <Column field="id" header="ID"></Column>
               <Column field="name" header="Name"></Column>
               <Column field="job" header="Job"></Column>
-              <Column field="address" header="Address"></Column>
+              <Column field="gender" header="Gender"></Column>
               <Column field="operator1" header="Operator 1"></Column>
               <Column field="operator2" header="Operator 2"></Column>
               <Column field="operator3" header="Operator 3"></Column>

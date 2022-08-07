@@ -6,7 +6,7 @@ import { InputText } from 'primereact/inputtext';
 
 const UserAdd = (props) => {
     const [displayBasic, setDisplayBasic] = useState(true);
-    const [user, setUser] = useState({name:'',job:"",address:"",operator1:"",operator2:"",operator3:""});
+    const [user, setUser] = useState({name:'',job:"",gender:"",operator1:"",operator2:"",operator3:""});
 
     const onHide = () => {
         setDisplayBasic(false);
@@ -29,7 +29,7 @@ const UserAdd = (props) => {
                 <form onSubmit={handleSubmit}>
                     <InputText value={user.name} placeholder="name" onChange={(e) => setUser({...user, name:e.target.value})} />
                     <InputText value={user.job}  placeholder="job" onChange={(e) => setUser({...user, job:e.target.value})} />
-                    <InputText value={user.address}  placeholder="address" onChange={(e) => setUser({...user, address:e.target.value})} />
+                    <InputText value={user.gender}  placeholder="gender" onChange={(e) => setUser({...user, gender:e.target.value})} />
                     <InputText value={user.operator1}  placeholder="operator1" onChange={(e) => setUser({...user, operator1:e.target.value})} />
                     <InputText value={user.operator2} placeholder="operator2" onChange={(e) => setUser({...user, operator2:e.target.value})} />
                     <InputText value={user.operator3} placeholder="operator3" onChange={(e) => setUser({...user, operator3:e.target.value})} />

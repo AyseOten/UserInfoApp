@@ -6,7 +6,7 @@ import { InputText } from 'primereact/inputtext';
 
 const EditOperator = (props) => {
     const [displayBasic, setDisplayBasic] = useState(true);
-    const [user, setUser] = useState({ name: '', job: "", address: "", operator1: "", operator2: "", operator3: "" });
+    const [user, setUser] = useState({ name: '', job: "", gender: "", operator1: "", operator2: "", operator3: "" });
 
     console.log(user)
 
@@ -15,7 +15,7 @@ const EditOperator = (props) => {
             ...user,
             name: props.user.name,
             job: props.user.job,
-            address: props.user.address,
+            gender: props.user.gender,
             operator1: props.user.operator1,
             operator2: props.user.operator2,
             operator3: props.user.operator3,
