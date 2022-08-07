@@ -11,7 +11,6 @@ const EditOperator = (props) => {
     console.log(user)
 
     useEffect(() => {
-
         setUser((user) => ({
             ...user,
             name: props.user.name,

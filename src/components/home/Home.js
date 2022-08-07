@@ -15,10 +15,11 @@ const Home = () => {
   const sortTypes = [
     { name: 'Sort By Name', code: 'name' },
     { name: 'Sort By ID', code: 'id' },
-];
+  ];
 
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState([]);
+  const [selectedJobType, setSelectedJobType] = useState([]);
   const [addUserMode, setAddUserMode] = useState(false)
   const [deleteUserMode, setDeleteUserMode] = useState(false)
   const [editOperatorMode, setEditOperatorMode] = useState(false)
@@ -49,12 +50,12 @@ const Home = () => {
   const onSortTypeChange = (e) => {
     setSelectedSortType(e.value)
 
-    if(!(e.value)){
+    if (!(e.value)) {
       return
     }
-    else if (e.value.code === "name"){
+    else if (e.value.code === "name") {
       const sortedData = users.sort((a, b) => {
-        const nameA = a.name.toUpperCase(); 
+        const nameA = a.name.toUpperCase();
         const nameB = b.name.toUpperCase();
         if (nameA < nameB) {
           return -1;
@@ -62,31 +63,28 @@ const Home = () => {
         if (nameA > nameB) {
           return 1;
         }
-
         return 0;
       })
       setUsers(sortedData)
     }
-    else if(e.value.code === "id"){
+    else if (e.value.code === "id") {
       const sortedData = users.sort((a, b) => a.id - b.id);
       setUsers(sortedData)
     }
   }
 
-  const onChangeFilter = (e) => { 
+  const onChangeFilter = (e) => {
     console.log(e.target.value)
-    const filteredUser = users.filter((user)=> user.name.includes(e.target.value))
-    setUsers(filteredUser )
+    const filteredUser = users.filter((user) => user.name.includes(e.target.value))
+    setUsers(filteredUser)
 
-    if(e.target.value===""){
+    if (e.target.value === "") {
       getUsers();
     }
   }
 
   return (
     <div className="Home">
-      <div className="left">
-      </div>
       <div className="right">
         <div className="navbar">
         </div>
@@ -97,8 +95,8 @@ const Home = () => {
               <Button style={{ "width": "auto" }} disabled={!selectedUser.name} onClick={deleteUser}> Delete User</Button>
               <Button style={{ "width": "auto" }} disabled={!selectedUser.name} onClick={operatorEdit}> Operator Add/Delete</Button>
             </div>
-            <div style={{ "display": "flex", "alignItems":"center" }}>
-              <InputText style={{ "width": "auto" }} onChange={onChangeFilter} placeholder="Filter By Name"/>
+            <div style={{ "display": "flex", "alignItems": "center" }}>
+              <InputText style={{ "width": "auto" }} onChange={onChangeFilter} placeholder="Filter By Name" />
               <Dropdown value={selectedSortType} options={sortTypes} onChange={onSortTypeChange} optionLabel="name" placeholder="Select sort type" />
             </div>
           </div>
