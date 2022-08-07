@@ -29,3 +29,9 @@
     width: 80vw;
     padding: 20px;
 }
+
+.p-dropdown{
+    height: 46px;
+    display: flex;
+    align-items: center;
+}

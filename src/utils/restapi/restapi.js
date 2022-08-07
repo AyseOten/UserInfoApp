@@ -14,6 +14,10 @@ const getUsers = () => {
   return axios.get(baseUrl + "users")
 }
 
+const getUserById = (id) => {
+  return axios.get(baseUrl + "users/"+ id)
+}
+
 const deleteUser = (id) => {
   return axios.delete(baseUrl + "users/"+ id)
 }
@@ -21,10 +25,15 @@ const deleteUser = (id) => {
 const addUser = (user) => {
   return axios.post(baseUrl + "users", user)
 }
+const editOperator = (id, user) => {
+  return axios.put(baseUrl + "users/"+ id, user)
+}
 
 export const RestApi = {
     login,
     getUsers,
     deleteUser,
-    addUser
+    addUser, 
+    getUserById,
+    editOperator
 }
