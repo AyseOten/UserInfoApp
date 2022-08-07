@@ -16,13 +16,11 @@ const UserAdd = (props) => {
         event.preventDefault()
         RestApi.addUser(user).then((res) => {
             console.log(res)
+            onHide();
         }).then((err) => {
             console.log(err)
         })
-        onHide();
-        RestApi.getUsers().then((res) => {
-            console.log(res)
-        })
+        
     }
 
     return (

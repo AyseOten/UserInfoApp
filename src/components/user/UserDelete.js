@@ -15,14 +15,11 @@ const UserDelete = (props) => {
     const deleteAction = () => {
         RestApi.deleteUser(props.user.id).then((res)=>{
             console.log(res)
-
+            onHide();
         }).then((err)=> {
             console.log(err)
         })
-        onHide();
-        RestApi.getUsers().then((res)=> {
-            console.log(res)
-        })
+        
     }
 
     return (

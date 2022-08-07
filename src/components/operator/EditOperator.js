@@ -29,13 +29,9 @@ const EditOperator = (props) => {
     const editOperator = () => {
         RestApi.editOperator(props.user.id, user).then((res) => {
             console.log(res)
-
+            onHide();
         }).then((err) => {
             console.log(err)
-        })
-        onHide();
-        RestApi.getUsers().then((res) => {
-            console.log(res)
         })
     }
     return (

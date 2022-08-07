@@ -44,12 +44,15 @@ const Home = () => {
   }
   const userDeleteCallback = () => {
     setDeleteUserMode(false)
+    getUsers()
   }
   const userAddCallback = () => {
     setAddUserMode(false)
+    getUsers()
   }
   const operatorEditCallback = () => {
     setEditOperatorMode(false)
+    getUsers()
   }
   const operatorEdit = () => {
     setEditOperatorMode(true)
