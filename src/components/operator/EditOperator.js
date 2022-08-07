@@ -24,6 +24,7 @@ const EditOperator = (props) => {
 
     const onHide = () => {
         setDisplayBasic(false);
+        props.onClose()
     }
     const editOperator = () => {
         RestApi.editOperator(props.user.id, user).then((res) => {

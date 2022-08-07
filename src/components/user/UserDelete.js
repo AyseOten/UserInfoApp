@@ -10,6 +10,7 @@ const UserDelete = (props) => {
 
     const onHide = () => {
         setDisplayBasic(false);
+        props.onClose()
     }
     const deleteAction = () => {
         RestApi.deleteUser(props.user.id).then((res)=>{

@@ -4,12 +4,13 @@ import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 
-const UserAdd = () => {
+const UserAdd = (props) => {
     const [displayBasic, setDisplayBasic] = useState(true);
     const [user, setUser] = useState({name:'',job:"",address:"",operator1:"",operator2:"",operator3:""});
 
     const onHide = () => {
         setDisplayBasic(false);
+        props.onClose()
     }
     const handleSubmit = (event) => {
         event.preventDefault()

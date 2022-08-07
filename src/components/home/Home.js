@@ -19,7 +19,6 @@ const Home = () => {
 
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState([]);
-  const [selectedJobType, setSelectedJobType] = useState([]);
   const [addUserMode, setAddUserMode] = useState(false)
   const [deleteUserMode, setDeleteUserMode] = useState(false)
   const [editOperatorMode, setEditOperatorMode] = useState(false)
@@ -42,6 +41,15 @@ const Home = () => {
   }
   const deleteUser = () => {
     setDeleteUserMode(true)
+  }
+  const userDeleteCallback = () => {
+    setDeleteUserMode(false)
+  }
+  const userAddCallback = () => {
+    setAddUserMode(false)
+  }
+  const operatorEditCallback = () => {
+    setEditOperatorMode(false)
   }
   const operatorEdit = () => {
     setEditOperatorMode(true)
@@ -113,9 +121,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {deleteUserMode && <UserDelete user={selectedUser} />}
-      {addUserMode && <UserAdd />}
-      {editOperatorMode && <EditOperator user={selectedUser} />}
+      {deleteUserMode && <UserDelete user={selectedUser} onClose={userDeleteCallback}/>}
+      {addUserMode && <UserAdd onClose={userAddCallback} />}
+      {editOperatorMode && <EditOperator user={selectedUser}  onClose={operatorEditCallback}/>}
     </div>
   )
 }
