@@ -15,7 +15,6 @@ const UserAdd = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault()
         RestApi.addUser(user).then((res) => {
-            console.log(res)
             onHide();
         }).then((err) => {
             console.log(err)

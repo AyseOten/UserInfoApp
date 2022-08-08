@@ -90,7 +90,6 @@ const Home = () => {
   }
 
   const onChangeFilter = (e) => {
-    console.log(e.target.value)
     const filteredUser = users.filter((user) => user.name.includes(e.target.value))
     setUsers(filteredUser)
 

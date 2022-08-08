@@ -6,15 +6,12 @@ import { RestApi } from '../../utils/restapi/restapi';
 const UserDelete = (props) => {
     const [displayBasic, setDisplayBasic] = useState(true);
 
-    console.log(props.user)
-
     const onHide = () => {
         setDisplayBasic(false);
         props.onClose()
     }
     const deleteAction = () => {
         RestApi.deleteUser(props.user.id).then((res)=>{
-            console.log(res)
             onHide();
         }).then((err)=> {
             console.log(err)

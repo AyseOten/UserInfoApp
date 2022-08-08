@@ -8,8 +8,6 @@ const EditOperator = (props) => {
     const [displayBasic, setDisplayBasic] = useState(true);
     const [user, setUser] = useState({ name: '', job: "", gender: "", operator1: "", operator2: "", operator3: "" });
 
-    console.log(user)
-
     useEffect(() => {
         setUser((user) => ({
             ...user,
